@@ -128,14 +128,14 @@ const AuthForm = () => {
         </form>
         <div className="flex flex-col gap-3 justify-center items-center">
           <button
-            className="bg-slate-700  text-sm md:text-base  w-3/4 px-4  md:w-80 font-bold  py-3 text-white rounded-2xl"
+            className="bg-slate-700  text-sm md:text-base w-full px-4  md:w-80 font-bold  py-3 text-white rounded-2xl"
             onClick={() => setisLoginMode(!isLoginMode)}
           >
             Click Here to {!isLoginMode ? " Login" : " Register"}
           </button>
           <button
             type="button"
-            className="flex items-center justify-center w-3/4 md:w-80  text-xs md:text-base md:px-2 py-2 md:py-4 bg-white rounded-2xl"
+            className="flex items-center justify-center w-full md:w-80  text-xs md:text-base md:px-2 py-2 md:py-4 bg-white rounded-2xl"
             onClick={signUpGoogleHandler}
           >
             <img
