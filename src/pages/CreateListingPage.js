@@ -40,7 +40,7 @@ const CreateListingPage = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (regularPrice < discount) {
+    if (+regularPrice < +discount) {
       toast.error("Discount Must be Less or Equal to  Price");
       setLoading(false);
       return;
@@ -127,141 +127,144 @@ const CreateListingPage = () => {
       </div>
     );
   return (
-    <form
-      onSubmit={submitHandler}
-      className={"w-96 px-3 py-5 font-bold space-y-3"}
-    >
-      <div className="flex flex-col ">
-        <label>Sell/Rent</label>
-        <div className="flex space-x-2">
-          <FormButton
-            btnState={type}
-            btnText="Rent"
-            btnOnClick={() => setType("Rent")}
-          />
-          <FormButton
-            btnState={type}
-            btnText="Sell"
-            btnOnClick={() => setType("Sell")}
-          />
-        </div>
-      </div>
-
-      <FormInputField
-        containerClasses="flex  flex-col"
-        inputClasses="rounded-2xl w-full px-2 py-3 outline-none"
-        lableText="Title"
-        inputValue={title}
-        onChangeInput={(e) => setTitle(e.target.value)}
-      />
-
-      <div className="flex justify-between space-x-2">
-        <FormInputField
-          inputType="number"
-          containerClasses="flex flex-col"
-          labelClasses="text-center"
-          lableText="BathRooms"
-          inputClasses="rounded-2xl w-full px-2 py-3 outline-none"
-          inputValue={bathrooms > 1 ? bathrooms : 1}
-          onChangeInput={(e) => setBathrooms(e.target.value)}
-        />
-        <FormInputField
-          inputType="number"
-          labelClasses="text-center"
-          containerClasses="flex flex-col"
-          inputClasses="rounded-2xl w-full px-2 py-3 outline-none"
-          lableText="BedRooms"
-          inputValue={bedrooms > 1 ? bedrooms : 1}
-          onChangeInput={(e) => setBedrooms(e.target.value)}
-        />
-      </div>
-      <div className="flex flex-col ">
-        <label>Furnished</label>
-        <div className="flex space-x-2">
-          <FormButton
-            btnText="Yes"
-            btnState={isFurnished}
-            btnOnClick={() => setIsFurnished("Yes")}
-          />
-          <FormButton
-            btnText="No"
-            btnState={isFurnished}
-            btnOnClick={() => setIsFurnished("No")}
-          />
-        </div>
-      </div>
-      <div className="flex flex-col ">
-        <label>Parking Slot</label>
-        <div className="flex space-x-2">
-          <FormButton
-            btnText="Yes"
-            btnState={isParking}
-            btnOnClick={() => setIsParking("Yes")}
-          />
-          <FormButton
-            btnText="No"
-            btnState={isParking}
-            btnOnClick={() => setIsParking("No")}
-          />
-        </div>
-      </div>
-      <FormInputField
-        containerClasses="flex flex-col"
-        inputClasses="rounded-2xl px-2 py-3 outline-none"
-        inputType="number"
-        lableText="Reugular Price"
-        inputValue={regularPrice}
-        onChangeInput={(e) => setRegularPrice(e.target.value)}
-      />
-      <div className="flex flex-col ">
-        <label>Offer</label>
-        <div className="flex space-x-2">
-          <FormButton
-            btnText="Yes"
-            btnState={offer}
-            btnOnClick={() => setOffer("Yes")}
-          />
-          <FormButton
-            btnText="No"
-            btnState={offer}
-            btnOnClick={() => setOffer("No")}
-          />
-        </div>
-      </div>
-
-      {offer === "Yes" && (
-        <FormInputField
-          containerClasses="flex flex-col"
-          inputType="number"
-          inputClasses="rounded-2xl px-2 py-3 outline-none"
-          lableText="Discounted Price"
-          inputValue={discount}
-          onChangeInput={(e) => setDiscount(e.target.value)}
-        />
-      )}
-      <div className="flex flex-col ">
-        <label>Address</label>
-        <textarea
-          rows={3}
-          onChange={(e) => setAddress(e.target.value)}
-          className="outline-none rounded-3xl resize-none p-4 box-border"
-        />
-      </div>
-      <div>
-        <input
-          type="file"
-          className="file:bg-green-500 file:rounded-lg file:px-4 file:text-white file:font-bold   file:py-2 file:border-none"
-          onChange={handleFileChange}
-          multiple
-        />
-      </div>
-      <button
-        className="text-white bg-slate-900 px-5 py-2 rounded-2xl border-none"
-        type="submit"
+    <div className="p-3 max-w-lg md:p-6 text-sm md:text-base">
+      <h1 className="text-xl font-bold text-center">Create A New Listing</h1>
+      <form
+        onSubmit={submitHandler}
+        className={"max-w-md mx-auto md:mx-0 px-3 py-5 font-bold space-y-3"}
       >
-        Create
-      </button>
-    </form>
+        <div className="flex flex-col ">
+          <label>Sell/Rent</label>
+          <div className="flex space-x-2">
+            <FormButton
+              btnState={type}
+              btnText="Rent"
+              btnOnClick={() => setType("Rent")}
+            />
+            <FormButton
+              btnState={type}
+              btnText="Sell"
+              btnOnClick={() => setType("Sell")}
+            />
+          </div>
+        </div>
+
+        <FormInputField
+          containerClasses="flex  flex-col"
+          inputClasses="rounded-2xl w-full px-2 py-3 outline-none"
+          lableText="Title"
+          inputValue={title}
+          onChangeInput={(e) => setTitle(e.target.value)}
+        />
+
+        <div className="flex justify-between space-x-2">
+          <FormInputField
+            inputType="number"
+            containerClasses="flex flex-col"
+            labelClasses="text-center"
+            lableText="BathRooms"
+            inputClasses="rounded-2xl w-full px-2 py-3 outline-none"
+            inputValue={bathrooms > 1 ? bathrooms : 1}
+            onChangeInput={(e) => setBathrooms(e.target.value)}
+          />
+          <FormInputField
+            inputType="number"
+            labelClasses="text-center"
+            containerClasses="flex flex-col"
+            inputClasses="rounded-2xl w-full px-2 py-3 outline-none"
+            lableText="BedRooms"
+            inputValue={bedrooms > 1 ? bedrooms : 1}
+            onChangeInput={(e) => setBedrooms(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col ">
+          <label>Furnished</label>
+          <div className="flex space-x-2">
+            <FormButton
+              btnText="Yes"
+              btnState={isFurnished}
+              btnOnClick={() => setIsFurnished("Yes")}
+            />
+            <FormButton
+              btnText="No"
+              btnState={isFurnished}
+              btnOnClick={() => setIsFurnished("No")}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col ">
+          <label>Parking Slot</label>
+          <div className="flex space-x-2">
+            <FormButton
+              btnText="Yes"
+              btnState={isParking}
+              btnOnClick={() => setIsParking("Yes")}
+            />
+            <FormButton
+              btnText="No"
+              btnState={isParking}
+              btnOnClick={() => setIsParking("No")}
+            />
+          </div>
+        </div>
+        <FormInputField
+          containerClasses="flex flex-col"
+          inputClasses="rounded-2xl px-2 py-3 outline-none"
+          inputType="number"
+          lableText="Reugular Price"
+          inputValue={regularPrice}
+          onChangeInput={(e) => setRegularPrice(e.target.value)}
+        />
+        <div className="flex flex-col ">
+          <label>Offer</label>
+          <div className="flex space-x-2">
+            <FormButton
+              btnText="Yes"
+              btnState={offer}
+              btnOnClick={() => setOffer("Yes")}
+            />
+            <FormButton
+              btnText="No"
+              btnState={offer}
+              btnOnClick={() => setOffer("No")}
+            />
+          </div>
+        </div>
+
+        {offer === "Yes" && (
+          <FormInputField
+            containerClasses="flex flex-col"
+            inputType="number"
+            inputClasses="rounded-2xl px-2 py-3 outline-none"
+            lableText="Discounted Price"
+            inputValue={discount}
+            onChangeInput={(e) => setDiscount(e.target.value)}
+          />
+        )}
+        <div className="flex flex-col ">
+          <label>Address</label>
+          <textarea
+            rows={3}
+            onChange={(e) => setAddress(e.target.value)}
+            className="outline-none rounded-3xl resize-none p-4 box-border"
+          />
+        </div>
+        <div>
+          <input
+            type="file"
+            className="file:bg-green-500 file:rounded-lg file:px-4 file:text-white file:font-bold   file:py-2 file:border-none"
+            onChange={handleFileChange}
+            multiple
+          />
+        </div>
+        <button
+          className="text-white bg-slate-900 px-5 py-2 rounded-2xl border-none"
+          type="submit"
+        >
+          Create
+        </button>
+      </form>
+    </div>
   );
 };
 

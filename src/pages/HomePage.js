@@ -20,36 +20,39 @@ const HomePage = () => {
   if (!isListingLoaded) return <LoadingSpinner />;
 
   return (
-    <div className="p-5  font-bold">
-      <h3>Explore</h3>
-      <Swiper
-        slidesPerView={1}
-        autoplay={{ delay: 3000 }}
-        pagination={{ clickable: true }}
-      >
-        {listing.slice(0, 4).map((item) => (
-          <SwiperSlide key={item.id}>
-            <SliderImage
-              imageUrl={item.imgUrls[0]}
-              description={item.title}
-              price={item.regularPrice}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      <h3 className="font-extrabold">Categories</h3>
-      <div className="flex flex-col md:flex-row mt-3">
-        <Category
-          imageUrl="https://wallpaperaccess.com/full/1700222.jpg"
-          title="Places For Sale"
-          linkUrl="/sale-places"
-        />
-        <Category
-          imageUrl="https://wallpapercave.com/wp/E1svyPv.jpg"
-          title="Places for Rent"
-          linkUrl="rent-places"
-        />
+    <div className="py-3 px-5 space-y-4  font-bold">
+      <div>
+        <h1 className="font-bold">Explore</h1>
+        <Swiper
+          slidesPerView={1}
+          autoplay={{ delay: 3000 }}
+          pagination={{ clickable: true }}
+        >
+          {listing.slice(0, 4).map((item) => (
+            <SwiperSlide key={item.id}>
+              <SliderImage
+                imageUrl={item.imgUrls[0]}
+                description={item.title}
+                price={item.regularPrice}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <div>
+        <h3 className="font-extrabold">Categories</h3>
+        <div className="flex flex-col md:flex-row mt-3">
+          <Category
+            imageUrl="https://wallpaperaccess.com/full/1700222.jpg"
+            title="Places For Sale"
+            linkUrl="/sale-places"
+          />
+          <Category
+            imageUrl="https://wallpapercave.com/wp/E1svyPv.jpg"
+            title="Places for Rent"
+            linkUrl="rent-places"
+          />
+        </div>
       </div>
     </div>
   );

@@ -27,7 +27,15 @@ const AppRoutes = () => {
         }
       />
       <Route path="/listing/:listingId" element={<ListingDetailPage />} />
-      <Route path="/contact-landlord/:uid" element={<ContactLandLordPage />} />
+
+      <Route
+        path="/contact-landlord/:uid"
+        element={
+          <PrivateRoute>
+            <ContactLandLordPage />
+          </PrivateRoute>
+        }
+      />
 
       <Route path="/rent-places" element={<RentPlaces />} />
       <Route path="/sale-places" element={<SalePlaces />} />

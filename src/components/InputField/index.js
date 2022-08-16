@@ -10,11 +10,11 @@ const InputField = ({
   ...otherProps
 }) => {
   return (
-    <div className="flex rounded-full bg-white items-center w-full border-none p-2 my-3">
+    <div className="flex rounded-full bg-white items-center w-full border-none md:p-2 my-3">
       <div className="flex items-center flex-1 mx-2">
         {children}
         <input
-          className="px-3 py-2 w-full outline-none border-none"
+          className="md:px-3 px-2 py-1 md:py-2 w-full outline-none border-none"
           placeholder={name}
           name={name}
           value={value}

@@ -9,7 +9,7 @@ const Card = ({ item, onDelete, isOnProfile }) => {
   const { id, imgUrls, address, title, regularPrice, bedrooms, bathrooms } =
     item;
   return (
-    <div className="flex my-2 bg-white p-2 md:p-4 mt-2 mx-1 font-bold md:m-3 rounded-3xl transition-colors delay-100 duration-500 hover:bg-slate-300">
+    <div className="flex flex-col max-w-sm md:max-w-lg md:flex-row my-2 bg-white p-2 md:p-4 mt-2 mx-1 font-bold md:m-3 rounded-3xl transition-colors delay-100 duration-500 hover:bg-slate-300">
       <div className="w-40 h-40 md:w-44 md:h-40 lg:w-56 lg:h-52">
         <img
           src={imgUrls[0]}

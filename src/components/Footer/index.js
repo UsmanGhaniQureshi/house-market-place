@@ -8,8 +8,8 @@ const Footer = () => {
         to={"/"}
         className={({ isActive }) =>
           isActive
-            ? "flex items-center text-slate-900 transition-all p-4 flex-col hover:bg-slate-300"
-            : "flex items-center text-slate-400 transition-all p-4 flex-col hover:bg-slate-300"
+            ? "flex items-center text-slate-900 transition-all p-2 md:p-4 flex-col hover:bg-slate-300"
+            : "flex items-center text-slate-400 transition-all p-2 md:p-4 flex-col hover:bg-slate-300"
         }
       >
         <div>
@@ -21,8 +21,8 @@ const Footer = () => {
         to="/offers"
         className={({ isActive }) =>
           isActive
-            ? "flex items-center text-slate-900 transition-all p-4 flex-col hover:bg-slate-300"
-            : "flex items-center text-slate-400 transition-all p-4 flex-col hover:bg-slate-300"
+            ? "flex items-center text-slate-900 transition-all p-2 md:p-4 flex-col hover:bg-slate-300"
+            : "flex items-center text-slate-400 transition-all p-2 md:p-4 flex-col hover:bg-slate-300"
         }
       >
         <div>
@@ -34,8 +34,8 @@ const Footer = () => {
         to="/profile"
         className={({ isActive }) =>
           isActive
-            ? "flex items-center text-slate-900 transition-all p-4 flex-col hover:bg-slate-300"
-            : "flex items-center text-slate-400 transition-all p-4 flex-col hover:bg-slate-300"
+            ? "flex items-center text-slate-900 transition-all p-2 md:p-4 flex-col hover:bg-slate-300"
+            : "flex items-center text-slate-400 transition-all p-2 md:p-4 flex-col hover:bg-slate-300"
         }
       >
         <div>

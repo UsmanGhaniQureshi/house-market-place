@@ -3,27 +3,22 @@ import Card from "../Card";
 
 const Listing = ({ items, onDelete, isOnProfile }) => {
   return (
-    <>
-      {items.map((offer, index) =>
+    <div className="max-w-4xl mx-auto">
+      {items.map((item, index) =>
         !isOnProfile ? (
-          <Link to={`/listing/${offer.id}`}>
-            <Card
-              key={index}
-              item={offer}
-              isOnProfile={isOnProfile}
-              onDelete={onDelete}
-            />
+          <Link key={index} to={`/listing/${item.id}`}>
+            <Card item={item} isOnProfile={isOnProfile} onDelete={onDelete} />
           </Link>
         ) : (
           <Card
             key={index}
-            item={offer}
+            item={item}
             isOnProfile={isOnProfile}
             onDelete={onDelete}
           />
         )
       )}
-    </>
+    </div>
   );
 };
 

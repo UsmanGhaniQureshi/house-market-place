@@ -1,21 +1,11 @@
-import SwiperCore, {
-  Navigation,
-  A11y,
-  Scrollbar,
-  Pagination,
-  Autoplay,
-} from "swiper";
-import "swiper/swiper-bundle.css";
-
 import { Link } from "react-router-dom";
-
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import Carousel from "../Carousel";
-SwiperCore.use([Navigation, A11y, Scrollbar, Pagination, Autoplay]);
+import useAuth from "../../store/AuthContext";
 
 const ListingDetailItem = ({ item }) => {
+  const { user } = useAuth();
   const {
     title,
     bathrooms,
@@ -31,11 +21,11 @@ const ListingDetailItem = ({ item }) => {
   } = item;
 
   return (
-    <>
+    <div>
       <Carousel images={imgUrls} />
-      <div className="flex  flex-col bg-slate-300  p-6">
+      <div className="flex  flex-col bg-slate-300 mx-auto   p-6">
         <p className="text-base">{address}</p>
-        <p className="font-extrabold text-3xl">
+        <p className="font-extrabold text-sm md:text-3xl">
           {title} - <span className="text-green-600">{regularPrice} Rs.</span>
         </p>
         <div className="flex space-x-2 my-3">
@@ -77,15 +67,18 @@ const ListingDetailItem = ({ item }) => {
             )}
           </div>
         </div>
-
-        <Link
-          className="btn btn-secondary border-none rounded-lg my-7"
-          to={`/contact-landlord/${userRef}?listingName=${title}`}
-        >
-          Contact LandLord
-        </Link>
+        <div>
+          {user?.uid !== item.userRef && (
+            <Link
+              className="btn btn-secondary border-none rounded-lg my-7"
+              to={`/contact-landlord/${userRef}?listingName=${title}`}
+            >
+              Contact LandLord
+            </Link>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
